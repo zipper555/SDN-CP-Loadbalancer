@@ -22,7 +22,7 @@ upon the load, Elasticon automatically balances the load among
 the controllers thus ensuring normal performance even during
 peak traffic. We implement a database to determine the load on
 the controllers and also a switch migration protocol to transfer
-the switch to another controller for load shifting.
+the switch to another controller for load balancing.
 
 
 Code:
