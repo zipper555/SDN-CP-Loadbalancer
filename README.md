@@ -24,13 +24,16 @@ Steps to verify:
 ---------------------------------------------------
 1) Open a python shell and connect to the db using
 
-   client = MongoClient('localhost', 27017)   db = client.elastiCon 
+   client = MongoClient('localhost', 27017)
+   db = client.elastiCon 
    controllers = db.controllers 
-   flags = db.flags   gen_id = db.gen_id    cmf = db.cmf 
+   flags = db.flags
+   gen_id = db.gen_id 
+   cmf = db.cmf 
 
 2) Monitor the Packet counts at both controllers using
- >>> controllers.find_one({'id':'1'})
- >>> controllers.find_one({'id':'2'})
+ > controllers.find_one({'id':'1'})
+ > controllers.find_one({'id':'2'})
 
 3) Initiate a ping in the mininet
    mininet> h1 ping h2 -i 3
@@ -40,10 +43,10 @@ Steps to verify:
 4) Observe that, when the count reaches 150, the switch is migrated and the controller                ceases to receive further packetINs. Instead, the other controller's packetIN resets and starts to increment.
 
 5) Between multiple runs ensure to drop the documents of the db using:
- >>> controllers.drop()
- >>> flags.drop()
- >>> gen_id.drop()
- >>> cmf.drop()
+ > controllers.drop()
+ > flags.drop()
+ > gen_id.drop()
+ > cmf.drop()
 
 
 
