@@ -1,5 +1,28 @@
-Elasticon:
+# Elasticon:
+
 Ref - ElastiCon: An Elastic Distributed SDN Controller, Advait Dixit, Fang Hao, Sarit Mukherjee, T. V. Lakshman, Ramana Rao Kompella.
+
+Present day networking has revolutionised itself by
+providing a centralized view of the entire network, making it
+easier to manage and control. Software Defined Networking is
+an emerging paradigm for implementing centralized control in
+modern networking technologies like data centers where the data
+is handled by a large amount of switches. Handling this large
+data dynamically is a challenge in modern day networking since
+performance is a vital criteria for every client. The key limitation
+of present day network architecture is the static configuration
+between the switch and controller which results in an uneven
+distribution of the load in case of sudden dynamic shift in the
+load .
+To address this problem, ElastiCon, an elastic distributed
+controller architecture is proposed in which the controller pool is
+dynamically grown or shrunk according to traffic conditions to
+address the load imbalance situations in the network. Depending
+upon the load, Elasticon automatically balances the load among
+the controllers thus ensuring normal performance even during
+peak traffic. We implement a database to determine the load on
+the controllers and also a switch migration protocol to transfer
+the switch to another controller for load shifting.
 
 
 Code:
@@ -46,10 +69,10 @@ Steps to verify:
 
 5) Between multiple runs ensure to drop the documents of the db using:
 
-  controllers.drop()  
-  flags.drop()   
-  gen_id.drop()  
-  cmf.drop()    
+   controllers.drop()  
+   flags.drop()   
+   gen_id.drop()  
+   cmf.drop()    
 
 
 
