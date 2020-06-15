@@ -1,4 +1,5 @@
-Group 2 - Elasticon:
+Elasticon:
+Ref - ElastiCon: An Elastic Distributed SDN Controller, Advait Dixit, Fang Hao, Sarit Mukherjee, T. V. Lakshman, Ramana Rao Kompella.
 
 
 Code:
@@ -23,30 +24,32 @@ sudo mn --custom multi_ctlr_topo.py --controller=remote --topo mytopo
 Steps to verify:
 ---------------------------------------------------
 1) Open a python shell and connect to the db using
-
-   client = MongoClient('localhost', 27017)
-   db = client.elastiCon 
-   controllers = db.controllers 
-   flags = db.flags
-   gen_id = db.gen_id 
-   cmf = db.cmf 
+   
+   client = MongoClient('localhost', 27017)      
+   db = client.elastiCon     
+   controllers = db.controllers   
+   flags = db.flags  
+   gen_id = db.gen_id  
+   cmf = db.cmf   
 
 2) Monitor the Packet counts at both controllers using
- > controllers.find_one({'id':'1'})
- > controllers.find_one({'id':'2'})
+   controllers.find_one({'id':'1'})  
+   controllers.find_one({'id':'2'})   
 
 3) Initiate a ping in the mininet
-   mininet> h1 ping h2 -i 3
-
+   
+   mininet> h1 ping h2 -i 3   
+   
    Here we use -i 3 so that packet counts can be clearly monitored.
 
-4) Observe that, when the count reaches 150, the switch is migrated and the controller                ceases to receive further packetINs. Instead, the other controller's packetIN resets and starts to increment.
+4) Observe that, when the count reaches 150, the switch is migrated and the controller ceases to receive further packetINs. Instead, the other controller's packetIN resets and starts to increment.
 
 5) Between multiple runs ensure to drop the documents of the db using:
- > controllers.drop()
- > flags.drop()
- > gen_id.drop()
- > cmf.drop()
+
+  controllers.drop()  
+  flags.drop()   
+  gen_id.drop()  
+  cmf.drop()    
 
 
 
