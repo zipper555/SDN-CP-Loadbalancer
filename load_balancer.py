@@ -20,7 +20,7 @@ flags = {"MigrationInProgress":
 gen_id = {"value":"1"}
 
 Central Migration Flag
-cmf = {"1":"False", "2":"False"}
+cmf = {"1":"0", "2":"0"}
 0 - No Migration in progress
 1 - Migration just started, action required
 2 - Migration in the middle, no new migrations.
@@ -177,6 +177,9 @@ def flag_check(ctlr_id, flag='MigrationInProgress'):
         return status
 
 def get_gen_id():
+    """
+    Generates a gen_id to be used for Role Request
+    """
     entry = gen_id.find_one()
     if not entry:
         # gen_id document doesn't exist, Creating one...
@@ -192,6 +195,9 @@ def get_gen_id():
     return int(value)
 
 def get_cmf_status():
+    """
+    Get status of the Central Migration Flag
+    """
     entry = cmf.find_one()
     if not entry:
         # cmf document doesn't exist, Creating one...
@@ -201,24 +207,9 @@ def get_cmf_status():
     return(cmf.find_one())
 
 def update_cmf_status(ctlr_id, status):
+    """
+    Update status of Central Migration Flag
+    """
     entry = cmf.find_one()
     id = entry['_id']
     cmf.update_one({'_id': id}, {'$set':{str(ctlr_id): str(status)}})
-
-
-
-#cid = add_new_controller()
-#stats_update()
-#print cid
-"""
-status = stats_update(1, 2)
-print status
-stats_update(1, 1)
-stats_update(1, 2)
-stats_update(1, 1)
-stats_update(1, 2)
-stats_update(1, 1)
-print "Migration status"
-print check_migration(1)
-"""
-# stats_update(1,4)

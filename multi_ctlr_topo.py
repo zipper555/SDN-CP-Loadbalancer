@@ -21,7 +21,7 @@ class MyTopo(Topo):
         # h2 = net.addHost( 'h2', ip='10.0.0.2', mac='00:00:00:00:00:02' )
         '''
         # For 4 host four switch Topology
-        
+
         h1 = net.addHost('h1', ip='10.0.0.1')
         h2 = net.addHost('h2', ip='10.0.0.2')
         h3 = net.addHost( 'h3', ip='10.0.0.3' )
@@ -36,7 +36,7 @@ class MyTopo(Topo):
         s2.linkTo( h2 )
         s3.linkTo( h3 )
         s4.linkTo( h4 )
-        
+
         s1.linkTo(s2)
         s2.linkTo(s3)
         s3.linkTo(s4)
@@ -82,4 +82,3 @@ class MyTopo(Topo):
 
 
 topos = {'mytopo': (lambda: MyTopo())}
-
